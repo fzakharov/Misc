@@ -1,13 +1,14 @@
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 
 namespace PtRpg.Tests.Unit
 {
-    [TestClass]
+    [TestFixture]
     public class UnitTest1
     {
-        [TestMethod]
+
+        [Test]
         public void TestMethod1()
         {
             var dep = Mock.Of<IInterface>();

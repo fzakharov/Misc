@@ -18,13 +18,13 @@ namespace PtRpg.Tests.Unit
         {
             // Given
             const char input = 'w';
-            int expected = 42;
+            int expectedHealth = 42;
 
             // When
             Target.ProcessInput(input);
 
             // Then
-            Target.Hero.Health.Should().Be(expected);
+            Target.Hero.Health.Should().Be(expectedHealth);
         }
     }
 }

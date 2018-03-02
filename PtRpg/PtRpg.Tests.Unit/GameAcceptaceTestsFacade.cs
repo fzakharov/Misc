@@ -1,19 +1,21 @@
-﻿using System;
-
-namespace PtRpg.Tests.Unit
+﻿namespace PtRpg.Tests.Unit
 {
     public class GameAcceptaceTestsFacade
     {
+        private KeyScenarioSelector _scenarioSelector;
+
         public GameAcceptaceTestsFacade()
         {
             Hero = new HeroState();
+            _scenarioSelector = new KeyScenarioSelector();
         }
 
         public HeroState Hero { get; internal set; }
 
-        internal void ProcessInput(char input)
+        public void ProcessInput(char input)
         {
-            Hero.Health = 42;
+             var scenario = _scenarioSelector.GetByInput(input);
+            scenario.Execute(Hero);
         }
     }
 }

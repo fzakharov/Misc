@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace PtRpg.Tests.Unit
+﻿namespace PtRpg.Tests.Unit
 {
-    public class GameScenario
+    public class HealthScenario : IScenario
     {
-        internal void Execute(HeroState hero)
+        public int HealthToSet;
+
+        public void Execute(HeroState hero)
         {
-            hero.Health = 42;
+            hero.Health = HealthToSet;
         }
     }
 }

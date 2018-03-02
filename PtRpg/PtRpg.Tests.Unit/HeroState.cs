@@ -2,6 +2,8 @@
 {
     public class HeroState
     {
-        public object Health { get; internal set; }
+        public int Money { get; set; }
+
+        public int Health { get; set; }
     }
 }

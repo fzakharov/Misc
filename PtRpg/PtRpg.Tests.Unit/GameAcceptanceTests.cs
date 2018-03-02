@@ -6,11 +6,16 @@ namespace PtRpg.Tests.Unit
     [TestFixture]
     public class GameAcceptanceTests
     {
-        public GameAcceptaceTestsFacade Target { get; private set; }
+        private KeyScenarioSelector _scenarioSelector;
+
+        public GameTestsFacade Target { get; private set; }
+        
 
         [SetUp]
-        public void SetUp() {
-            Target = new GameAcceptaceTestsFacade();
+        public void SetUp()
+        {
+            _scenarioSelector = new KeyScenarioSelector();
+            Target = new GameTestsFacade(_scenarioSelector);
         }
 
         [Test]
@@ -20,11 +25,33 @@ namespace PtRpg.Tests.Unit
             const char input = 'w';
             int expectedHealth = 42;
 
+            var scenario = new HealthScenario();
+            scenario.HealthToSet = expectedHealth;
+            _scenarioSelector.BindScenario(input, scenario);
+
             // When
             Target.ProcessInput(input);
 
             // Then
             Target.Hero.Health.Should().Be(expectedHealth);
+        }
+
+        [Test]
+        public void Should_change_money_to_expeted_When_ProcessInput()
+        {
+            // Given
+            const char input = 'a';
+            int expectedMoney = 24;
+
+            var scenario = new MoneyScenario();
+            scenario.MoneyToSet = expectedMoney;
+            _scenarioSelector.BindScenario(input, scenario);
+
+            // When
+            Target.ProcessInput(input);
+
+            // Then
+            Target.Hero.Health.Should().Be(expectedMoney);
         }
     }
 }

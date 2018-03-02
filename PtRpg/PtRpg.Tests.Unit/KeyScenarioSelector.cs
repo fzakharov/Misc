@@ -4,9 +4,18 @@ namespace PtRpg.Tests.Unit
 {
     public class KeyScenarioSelector
     {
-        public GameScenario GetByInput(char input)
+        private char _input;
+        private IScenario _scenario;
+
+        public IScenario GetByInput(char input)
         {
-            return new GameScenario();
+            return _scenario;
+        }
+
+        internal void BindScenario(char input, IScenario scenario)
+        {
+            _input = input;
+            _scenario = scenario;
         }
     }
 }

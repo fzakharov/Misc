@@ -1,13 +1,13 @@
 ﻿namespace PtRpg.Tests.Unit
 {
-    public class GameAcceptaceTestsFacade
+    public class GameTestsFacade
     {
         private KeyScenarioSelector _scenarioSelector;
 
-        public GameAcceptaceTestsFacade()
+        public GameTestsFacade(KeyScenarioSelector scenarioSelector)
         {
             Hero = new HeroState();
-            _scenarioSelector = new KeyScenarioSelector();
+            _scenarioSelector = scenarioSelector;
         }
 
         public HeroState Hero { get; internal set; }

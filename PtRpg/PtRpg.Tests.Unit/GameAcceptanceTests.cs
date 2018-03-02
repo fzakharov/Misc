@@ -30,10 +30,11 @@ namespace PtRpg.Tests.Unit
             _scenarioSelector.BindScenario(input, scenario);
 
             // When
-            Target.ProcessInput(input);
+            Target.UserPressed(input);
 
             // Then
-            Target.Hero.Health.Should().Be(expectedHealth);
+            Target.Hero.Health
+                .Should().Be(expectedHealth);
         }
 
         [Test]
@@ -48,7 +49,7 @@ namespace PtRpg.Tests.Unit
             _scenarioSelector.BindScenario(input, scenario);
 
             // When
-            Target.ProcessInput(input);
+            Target.UserPressed(input);
 
             // Then
             Target.Hero.Money.Should().Be(expectedMoney);

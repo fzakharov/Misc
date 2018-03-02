@@ -11,10 +11,11 @@
         }
 
         public HeroState Hero { get; internal set; }
+        public IHud Hud { get; internal set; }
 
-        public void ProcessInput(char input)
+        public void UserPressed(char c)
         {
-             var scenario = _scenarioSelector.GetByInput(input);
+            var scenario = _scenarioSelector.GetByInput(c);
             scenario.Execute(Hero);
         }
     }

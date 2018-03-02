@@ -22,6 +22,7 @@ namespace PtRpg.Tests.Unit
             const char input = 'w';
             var expected = Mock.Of<IScenario>();
             Target.BindScenario(input, expected);
+            Target.BindScenario('q', Mock.Of<IScenario>());
 
             // When
             var actual = Target.GetByInput(input);

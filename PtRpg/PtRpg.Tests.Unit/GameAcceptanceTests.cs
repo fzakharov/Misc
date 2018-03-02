@@ -51,7 +51,7 @@ namespace PtRpg.Tests.Unit
             Target.ProcessInput(input);
 
             // Then
-            Target.Hero.Health.Should().Be(expectedMoney);
+            Target.Hero.Money.Should().Be(expectedMoney);
         }
     }
 }

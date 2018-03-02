@@ -1,21 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PtRpg.Tests.Unit
 {
     public class KeyScenarioSelector
     {
-        private char _input;
-        private IScenario _scenario;
+        Dictionary<char, IScenario> _bindings = new Dictionary<char, IScenario>();
 
         public IScenario GetByInput(char input)
         {
-            return _scenario;
+            return _bindings[input];
         }
 
-        internal void BindScenario(char input, IScenario scenario)
+        public void BindScenario(char input, IScenario scenario)
         {
-            _input = input;
-            _scenario = scenario;
+            _bindings[input] = scenario;
         }
     }
 }

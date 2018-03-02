@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace PtRpg.Tests.Unit
+namespace PtRpg
 {
     public class KeyScenarioSelector
     {

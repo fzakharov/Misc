@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PtRpg.Tests.Unit
+namespace PtRpg
 {
     internal class PtRpgGame
     {

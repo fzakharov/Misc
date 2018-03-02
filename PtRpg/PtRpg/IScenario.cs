@@ -1,4 +1,4 @@
-﻿namespace PtRpg.Tests.Unit
+﻿namespace PtRpg
 {
     public interface IScenario
     {

@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using Moq;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace PtRpg.Tests.Unit
 {
@@ -29,6 +31,18 @@ namespace PtRpg.Tests.Unit
 
             // Then
             actual.Should().Be(expected);
+        }
+
+        [Test]
+        public void Should_throw_When_GetByInput_for_unregistred_key()
+        {
+            // Given
+            char unregistredKey = 'a';
+            // When
+            var action = Target.Invoking(t => t.GetByInput(unregistredKey));
+
+            // Then
+            action.Should().Throw<KeyNotFoundException>();
         }
     }
 }

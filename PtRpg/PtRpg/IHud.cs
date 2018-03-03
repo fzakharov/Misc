@@ -2,6 +2,6 @@
 {
     public interface IHud
     {
-        object Status { get; set; }
+        void Update(HeroState hero);
     }
 }

@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtRpg", "PtRpg\PtRpg.csproj", "{50AB819C-E670-4949-B5E1-6B499FE8545F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtRpg", "PtRpg\PtRpg.csproj", "{50AB819C-E670-4949-B5E1-6B499FE8545F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtRpg.Tests.Unit", "PtRpg.Tests.Unit\PtRpg.Tests.Unit.csproj", "{36F4D0F7-49FB-434C-9708-1B9745ED0B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtRpg.Tests.Unit", "PtRpg.Tests.Unit\PtRpg.Tests.Unit.csproj", "{36F4D0F7-49FB-434C-9708-1B9745ED0B34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED1F8B85-2689-4384-9B5E-AA96783422CD}"
+	ProjectSection(SolutionItems) = preProject
+		unit_test_snippet.snippet = unit_test_snippet.snippet
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

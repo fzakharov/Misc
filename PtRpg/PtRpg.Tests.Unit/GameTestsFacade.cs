@@ -7,16 +7,18 @@
         public GameTestsFacade(KeyScenarioSelector scenarioSelector)
         {
             Hero = new HeroState();
+            Hud = new TestHud();
             _scenarioSelector = scenarioSelector;
         }
 
         public HeroState Hero { get; internal set; }
-        public IHud Hud { get; internal set; }
+        public TestHud Hud { get; internal set; }
 
         public void UserPressed(char c)
         {
             var scenario = _scenarioSelector.GetByInput(c);
             scenario.Execute(Hero);
+            Hud.Update(Hero);
         }
     }
 }

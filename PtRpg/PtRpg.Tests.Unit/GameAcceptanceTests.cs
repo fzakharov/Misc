@@ -35,6 +35,9 @@ namespace PtRpg.Tests.Unit
             // Then
             Target.Hero.Health
                 .Should().Be(expectedHealth);
+
+            Target.Hud.Hero
+                .Should().Be(Target.Hero);
         }
 
         [Test]
@@ -52,7 +55,11 @@ namespace PtRpg.Tests.Unit
             Target.UserPressed(input);
 
             // Then
-            Target.Hero.Money.Should().Be(expectedMoney);
+            Target.Hero.Money
+                .Should().Be(expectedMoney);
+
+            Target.Hud.Hero
+                .Should().Be(Target.Hero);
         }
     }
 }

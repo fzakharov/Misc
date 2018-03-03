@@ -18,7 +18,6 @@ namespace PtRpg.Tests.Unit
             Target = new TextHud(_tw);
         }
 
-
         [Test]
         public void Should_write_hero_state_When_Update()
         {

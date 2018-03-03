@@ -2,6 +2,6 @@
 {
     public interface IInput
     {
-        char Read();
+        int Read();
     }
 }

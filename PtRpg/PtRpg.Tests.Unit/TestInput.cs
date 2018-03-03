@@ -2,14 +2,14 @@
 {
     public class TestInput : IInput, IInputWriter
     {
-        char _input;
+        int _input;
 
-        public char Read()
+        public int Read()
         {
             return _input;
         }
 
-        public void Write(char c)
+        public void Write(int c)
         {
             _input = c;
         }

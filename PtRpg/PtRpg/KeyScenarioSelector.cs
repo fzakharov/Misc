@@ -4,14 +4,14 @@ namespace PtRpg
 {
     public class KeyScenarioSelector
     {
-        Dictionary<char, IScenario> _bindings = new Dictionary<char, IScenario>();
+        Dictionary<int, IScenario> _bindings = new Dictionary<int, IScenario>();
 
-        public IScenario GetByInput(char input)
+        public IScenario GetByInput(int input)
         {
             return _bindings[input];
         }
 
-        public void BindScenario(char input, IScenario scenario)
+        public void BindScenario(int input, IScenario scenario)
         {
             _bindings[input] = scenario;
         }

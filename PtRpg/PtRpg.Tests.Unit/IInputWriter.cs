@@ -2,6 +2,6 @@
 {
     public interface IInputWriter
     {
-        void Write(char c);
+        void Write(int c);
     }
 }

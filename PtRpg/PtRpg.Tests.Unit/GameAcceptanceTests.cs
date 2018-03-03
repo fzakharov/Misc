@@ -3,19 +3,35 @@ using NUnit.Framework;
 
 namespace PtRpg.Tests.Unit
 {
+    public class TestInput : IInput, IInputWriter
+    {
+        char _input;
+
+        public char Read()
+        {
+            return _input;
+        }
+
+        public void Write(char c)
+        {
+            _input = c;
+        }
+    }
+
     [TestFixture]
     public class GameAcceptanceTests
     {
         private KeyScenarioSelector _scenarioSelector;
 
         public GameTestsFacade Target { get; private set; }
-        
+
 
         [SetUp]
         public void SetUp()
         {
             _scenarioSelector = new KeyScenarioSelector();
-            Target = new GameTestsFacade(_scenarioSelector);
+            var input = new TestInput();
+            Target = new GameTestsFacade(_scenarioSelector, input, input);
         }
 
         [Test]

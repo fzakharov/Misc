@@ -3,22 +3,28 @@
     public class GameTestsFacade
     {
         private KeyScenarioSelector _scenarioSelector;
+        private GameLoop _game;
 
-        public GameTestsFacade(KeyScenarioSelector scenarioSelector)
+        public GameTestsFacade(
+            KeyScenarioSelector scenarioSelector, 
+            IInput input, 
+            IInputWriter writer)
         {
             Hero = new HeroState();
             Hud = new TestHud();
             _scenarioSelector = scenarioSelector;
+            Writer = writer;
+            _game = new GameLoop(Hud, Hero, _scenarioSelector, input);
         }
 
         public HeroState Hero { get; internal set; }
         public TestHud Hud { get; internal set; }
+        public IInputWriter Writer { get; private set; }
 
         public void UserPressed(char c)
         {
-            var scenario = _scenarioSelector.GetByInput(c);
-            scenario.Execute(Hero);
-            Hud.Update(Hero);
+            Writer.Write(c);
+            _game.NextStep();
         }
     }
 }

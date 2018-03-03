@@ -17,11 +17,6 @@ namespace PtRpg
             return _bindings[input];
         }
 
-        internal void BindScenario(char v, MoneyScenario moneyScenario)
-        {
-            throw new NotImplementedException();
-        }
-
         public void BindScenario(int input, IScenario scenario)
         {
             _bindings[input] = scenario;

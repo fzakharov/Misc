@@ -1,6 +1,6 @@
 ﻿using PtRpg.Engine;
 
-namespace PtRpg
+namespace PtRpg.Rpg
 {
     public class MoneyScenario : IScenario
     {

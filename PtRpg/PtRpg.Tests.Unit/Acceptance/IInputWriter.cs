@@ -1,4 +1,4 @@
-﻿namespace PtRpg.Tests.Unit
+﻿namespace PtRpg.Tests.Unit.Acceptance
 {
     public interface IInputWriter
     {

@@ -1,7 +1,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace PtRpg.Tests.Unit
+namespace PtRpg.Tests.Unit.Acceptance
 {
     [TestFixture]
     public class GameAcceptanceTests

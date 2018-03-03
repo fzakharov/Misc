@@ -1,6 +1,6 @@
 ﻿using PtRpg.Engine;
 
-namespace PtRpg.Tests.Unit
+namespace PtRpg.Tests.Unit.Acceptance
 {
     public class MockHud : IHud
     {

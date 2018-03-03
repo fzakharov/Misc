@@ -4,10 +4,10 @@
     {
         private readonly IHud _hud;
         private readonly HeroState _hero;
-        private readonly KeyScenarioSelector _selector;
+        private readonly IScenarioSelector<int> _selector;
         private IInput _input;
 
-        public GameLoop(IHud hud, HeroState hero, KeyScenarioSelector selector, IInput input)
+        public GameLoop(IHud hud, HeroState hero, IScenarioSelector<int> selector, IInput input)
         {
             _hud = hud;
             _hero = hero;

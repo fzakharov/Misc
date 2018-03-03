@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace PtRpg
 {
@@ -6,12 +7,19 @@ namespace PtRpg
     {
         static void Main(string[] args)
         {
+
+
+            //var serviceProvider = new ServiceCollection()
+            //.AddSingleton<IFooService, FooService>()
+            //.AddSingleton<IBarService, BarService>()
+            //.BuildServiceProvider();
+
+
             var selector = new KeyScenarioSelector();
             var hero = new HeroState();
             selector.BindScenario('m', new MoneyScenario { MoneyToSet = 500 });
             selector.BindScenario('h', new HealthScenario { HealthToSet = 42 });
             var hud = new TextHud(Console.Out);
-
 
             var game = new GameLoop(hud, hero, selector, new ConsoleInput());
 

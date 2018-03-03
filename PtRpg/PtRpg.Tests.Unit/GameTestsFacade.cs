@@ -21,7 +21,7 @@
         public TestHud Hud { get; internal set; }
         public IInputWriter Writer { get; private set; }
 
-        public void UserPressed(char c)
+        public void UserPressed(int c)
         {
             Writer.Write(c);
             _game.NextStep();

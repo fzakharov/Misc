@@ -2,7 +2,7 @@
 
 namespace PtRpg
 {
-    public class KeyScenarioSelector
+    public class KeyScenarioSelector: IScenarioSelector<int>
     {
         Dictionary<int, IScenario> _bindings = new Dictionary<int, IScenario>();
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PtRpg.Engine;
+using PtRpg.Textual;
 using System;
 
 namespace PtRpg
@@ -25,14 +27,6 @@ namespace PtRpg
 
             while (true)
                 game.NextStep();
-        }
-    }
-
-    public class ConsoleInput : IInput
-    {
-        public int Read()
-        {
-            return Console.ReadKey().KeyChar;
         }
     }
 }

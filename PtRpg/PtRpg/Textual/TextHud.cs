@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using PtRpg.Engine;
+using System.IO;
 
-namespace PtRpg
+namespace PtRpg.Textual
 {
     public class TextHud : IHud
     {

@@ -1,4 +1,6 @@
-﻿namespace PtRpg
+﻿using PtRpg.Engine;
+
+namespace PtRpg
 {
     public class HealthScenario : IScenario
     {

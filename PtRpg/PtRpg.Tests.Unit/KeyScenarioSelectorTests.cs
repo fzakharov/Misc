@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Moq;
 using NUnit.Framework;
+using PtRpg.Engine;
 using System.Collections.Generic;
 
 namespace PtRpg.Tests.Unit

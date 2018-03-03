@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using PtRpg.Engine;
+using System;
+using System.Collections.Generic;
 
 namespace PtRpg
 {
-    public class KeyScenarioSelector : IScenarioSelector<int>
+    public class KeyScenarioSelector : IScenarioSelector
     {
         Dictionary<int, IScenario> _bindings = new Dictionary<int, IScenario>();
 
@@ -13,6 +15,11 @@ namespace PtRpg
                     $"Unsupported command '{char.ConvertFromUtf32(input)}'");
 
             return _bindings[input];
+        }
+
+        internal void BindScenario(char v, MoneyScenario moneyScenario)
+        {
+            throw new NotImplementedException();
         }
 
         public void BindScenario(int input, IScenario scenario)

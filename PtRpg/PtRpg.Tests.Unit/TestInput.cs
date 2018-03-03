@@ -1,4 +1,6 @@
-﻿namespace PtRpg.Tests.Unit
+﻿using PtRpg.Engine;
+
+namespace PtRpg.Tests.Unit
 {
     public class TestInput : IInput, IInputWriter
     {

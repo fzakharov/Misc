@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PtRpg
+namespace PtRpg.Engine
 {
     public interface IHud
     {

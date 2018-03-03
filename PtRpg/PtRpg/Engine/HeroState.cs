@@ -1,4 +1,4 @@
-﻿namespace PtRpg
+﻿namespace PtRpg.Engine
 {
     public class HeroState
     {

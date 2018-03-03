@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using PtRpg.Engine;
+using PtRpg.Textual;
 using System.IO;
 
 namespace PtRpg.Tests.Unit

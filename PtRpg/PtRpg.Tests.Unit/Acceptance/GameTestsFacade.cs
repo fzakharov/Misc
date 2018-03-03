@@ -7,15 +7,20 @@ namespace PtRpg.Tests.Unit.Acceptance
     {
         private GameLoop _game;
 
-        public GameTestsFacade(IInput input, IInputWriter writer, IBindings bindings, IScenario[] scenarios)
+        public GameTestsFacade(IBindings bindings, GameConfiguration configuration)
         {
             Hero = new HeroState();
             Hud = new MockHud();
-            Writer = writer;
+            var input = new TestInput();
+            Writer = input;
             _game = new GameLoop(
                 Hud, 
                 Hero, 
-                new KeyScenarioSelector(scenarios, bindings), 
+                new KeyScenarioSelector(
+                    new IScenario[] {
+                        new HealthScenario(configuration),
+                        new MoneyScenario(configuration) }, 
+                    bindings), 
                 input);
         }
 

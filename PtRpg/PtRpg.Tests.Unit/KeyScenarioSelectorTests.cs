@@ -24,23 +24,23 @@ namespace PtRpg.Tests.Unit
     {
 
 
-        [Test]
-        public void Should__When_()
-        {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSingleton<IScenario, HealthScenario>();
-            serviceCollection.AddSingleton<IScenario, MoneyScenario>();
-            serviceCollection.AddSingleton<ClientClass>();
+        //[Test]
+        //public void Should__When_()
+        //{
+        //    var serviceCollection = new ServiceCollection();
+        //    serviceCollection.AddSingleton<IScenario, HealthScenario>();
+        //    serviceCollection.AddSingleton<IScenario, MoneyScenario>();
+        //    serviceCollection.AddSingleton<ClientClass>();
 
-            var prov = serviceCollection.BuildServiceProvider();
+        //    var prov = serviceCollection.BuildServiceProvider();
 
-            var cc = prov.GetService<ClientClass>();
+        //    var cc = prov.GetService<ClientClass>();
 
-            var sc = prov.GetServices<IScenario>();
+        //    var sc = prov.GetServices<IScenario>();
 
-            cc.Scenarios.Should().HaveCount(2);
+        //    cc.Scenarios.Should().HaveCount(2);
 
-        }
+        //}
 
 
 

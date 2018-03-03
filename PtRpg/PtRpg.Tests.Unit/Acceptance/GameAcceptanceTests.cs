@@ -11,20 +11,14 @@ namespace PtRpg.Tests.Unit.Acceptance
     {
         public GameTestsFacade Target { get; private set; }
         Mock<IBindings> _bindings = new Mock<IBindings>();
-        private HealthScenario _healthScenario;
-        private MoneyScenario _moneyScenario;
+        GameConfiguration _config = new GameConfiguration();
 
         [SetUp]
         public void SetUp()
         {
-            _healthScenario = new HealthScenario();
-            _moneyScenario = new MoneyScenario();
-            var input = new TestInput();
             Target = new GameTestsFacade(
-                input,
-                input,
                 _bindings.Object,
-                new IScenario[] { _healthScenario, _moneyScenario });
+                _config);
         }
 
         [Test]
@@ -32,49 +26,46 @@ namespace PtRpg.Tests.Unit.Acceptance
         {
             // Given
             const char input = 'w';
-            int expectedHealth = 42;
 
-            _healthScenario.HealthToSet = expectedHealth;
-
-            _bindings.Setup(b => b.Contains(input))
-                .Returns(true);
-            _bindings.Setup(b => b.GetName(input))
-                .Returns(_healthScenario.GetType().Name);
+            SetupBindings<HealthScenario>(input);
 
             // When
             Target.UserPressed(input);
 
             // Then
             Target.Hero.Health
-                .Should().Be(expectedHealth);
+                .Should().Be(_config.HealthToSet);
 
             Target.Hud.Hero
                 .Should().Be(Target.Hero);
         }
+
 
         [Test]
         public void Should_change_money_to_expeted_When_ProcessInput()
         {
             // Given
             const char input = 'a';
-            int expectedMoney = 24;
 
-            _bindings.Setup(b => b.Contains(input))
-                .Returns(true);
-            _bindings.Setup(b => b.GetName(input))
-                .Returns(_moneyScenario.GetType().Name);
-
-            _moneyScenario.MoneyToSet = expectedMoney;
+            SetupBindings<MoneyScenario>(input);
 
             // When
             Target.UserPressed(input);
 
             // Then
             Target.Hero.Money
-                .Should().Be(expectedMoney);
+                .Should().Be(_config.MoneyToSet);
 
             Target.Hud.Hero
                 .Should().Be(Target.Hero);
+        }
+
+        void SetupBindings<T>(char input)
+        {
+            _bindings.Setup(b => b.Contains(input))
+                .Returns(true);
+            _bindings.Setup(b => b.GetName(input))
+                .Returns(typeof(T).Name);
         }
     }
 }

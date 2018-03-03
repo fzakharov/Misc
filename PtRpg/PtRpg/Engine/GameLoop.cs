@@ -1,5 +1,6 @@
 ﻿namespace PtRpg.Engine
 {
+
     public class GameLoop
     {
         private readonly IHud _hud;

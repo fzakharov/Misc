@@ -4,11 +4,16 @@ namespace PtRpg.Rpg
 {
     public class HealthScenario : IScenario
     {
-        public int HealthToSet;
+        private readonly GameConfiguration _configuration;
+
+        public HealthScenario(GameConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public void Execute(HeroState hero)
         {
-            hero.Health = HealthToSet;
+            hero.Health = _configuration.HealthToSet;
         }
     }
 }

@@ -5,11 +5,16 @@ namespace PtRpg.Rpg
 {
     public class MoneyScenario : IScenario
     {
-        public int MoneyToSet { get; set; }
+        private readonly GameConfiguration _configuration;
+
+        public MoneyScenario(GameConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public void Execute(HeroState hero)
         {
-            hero.Money = MoneyToSet;
+            hero.Money = _configuration.MoneyToSet;
         }
     }
 }

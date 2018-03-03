@@ -33,7 +33,7 @@ namespace PtRpg.Tests.Unit
         }
 
         [Test]
-        public void Should_throw_When_GetByInput_for_unregistred_key()
+        public void Should_throw_GameException_When_GetByInput_for_unregistred_key()
         {
             // Given
             char unregistredKey = 'a';
@@ -41,7 +41,9 @@ namespace PtRpg.Tests.Unit
             var action = Target.Invoking(t => t.GetByInput(unregistredKey));
 
             // Then
-            action.Should().Throw<KeyNotFoundException>();
+            action.Should()
+                .Throw<GameException>()
+                .WithMessage($"Unsupported command '{unregistredKey}'");
         }
     }
 }

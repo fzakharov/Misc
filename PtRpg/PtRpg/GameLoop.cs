@@ -17,10 +17,17 @@
 
         public void NextStep()
         {
-            var input = _input.Read();
-            var scenario = _selector.GetByInput(input);
-            scenario.Execute(_hero);
-            _hud.Update(_hero);
+            try
+            {
+                var input = _input.Read();
+                var scenario = _selector.GetByInput(input);
+                scenario.Execute(_hero);
+                _hud.Update(_hero);
+            }
+            catch(GameException ex)
+            {
+                _hud.Update(ex);
+            }
         }
     }
 }

@@ -15,5 +15,10 @@ namespace PtRpg
         {
             _tw.WriteLine("Health: {0}\nMoney: {1}", hero.Health, hero.Money);
         }
+
+        public void Update(GameException ex)
+        {
+            _tw.WriteLine(ex.Message);
+        }
     }
 }

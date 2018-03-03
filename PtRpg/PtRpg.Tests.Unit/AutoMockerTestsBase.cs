@@ -11,9 +11,11 @@ namespace PtRpg.Tests.Unit
         T _target = null;
 
         [SetUp]
-        public void SetUp()
+        public void AmtSetUp()
         {
+            _target = null;
             _autoMock = new AutoMocker();
+            
         }
 
         public T Target

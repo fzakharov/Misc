@@ -35,5 +35,19 @@ namespace PtRpg.Tests.Unit
                     "Money",
                     hero.Health.ToString() });
         }
+
+        [Test]
+        public void Should_write_GameException_message_When_Update()
+        {
+            // Given
+            var expected = "expected error message";
+
+            // When
+            Target.Update(new GameException(expected));
+
+            // Then
+            var s = _tw.GetStringBuilder().ToString()
+                .Should().Contain(expected);
+        }
     }
 }

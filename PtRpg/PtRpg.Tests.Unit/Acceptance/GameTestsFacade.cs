@@ -1,22 +1,22 @@
 ﻿using PtRpg.Engine;
+using PtRpg.Rpg;
 
 namespace PtRpg.Tests.Unit.Acceptance
 {
     public class GameTestsFacade
     {
-        private KeyScenarioSelector _scenarioSelector;
         private GameLoop _game;
 
-        public GameTestsFacade(
-            KeyScenarioSelector scenarioSelector, 
-            IInput input, 
-            IInputWriter writer)
+        public GameTestsFacade(IInput input, IInputWriter writer, IBindings bindings, IScenario[] scenarios)
         {
             Hero = new HeroState();
             Hud = new MockHud();
-            _scenarioSelector = scenarioSelector;
             Writer = writer;
-            _game = new GameLoop(Hud, Hero, _scenarioSelector, input);
+            _game = new GameLoop(
+                Hud, 
+                Hero, 
+                new KeyScenarioSelector(scenarios, bindings), 
+                input);
         }
 
         public HeroState Hero { get; internal set; }

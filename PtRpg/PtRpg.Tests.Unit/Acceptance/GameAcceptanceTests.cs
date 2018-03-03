@@ -1,5 +1,7 @@
 using FluentAssertions;
+using Moq;
 using NUnit.Framework;
+using PtRpg.Engine;
 using PtRpg.Rpg;
 
 namespace PtRpg.Tests.Unit.Acceptance
@@ -7,17 +9,22 @@ namespace PtRpg.Tests.Unit.Acceptance
     [TestFixture]
     public class GameAcceptanceTests
     {
-        private KeyScenarioSelector _scenarioSelector;
-
         public GameTestsFacade Target { get; private set; }
-
+        Mock<IBindings> _bindings = new Mock<IBindings>();
+        private HealthScenario _healthScenario;
+        private MoneyScenario _moneyScenario;
 
         [SetUp]
         public void SetUp()
         {
-            _scenarioSelector = new KeyScenarioSelector();
+            _healthScenario = new HealthScenario();
+            _moneyScenario = new MoneyScenario();
             var input = new TestInput();
-            Target = new GameTestsFacade(_scenarioSelector, input, input);
+            Target = new GameTestsFacade(
+                input,
+                input,
+                _bindings.Object,
+                new IScenario[] { _healthScenario, _moneyScenario });
         }
 
         [Test]
@@ -27,9 +34,12 @@ namespace PtRpg.Tests.Unit.Acceptance
             const char input = 'w';
             int expectedHealth = 42;
 
-            var scenario = new HealthScenario();
-            scenario.HealthToSet = expectedHealth;
-            _scenarioSelector.BindScenario(input, scenario);
+            _healthScenario.HealthToSet = expectedHealth;
+
+            _bindings.Setup(b => b.Contains(input))
+                .Returns(true);
+            _bindings.Setup(b => b.GetName(input))
+                .Returns(_healthScenario.GetType().Name);
 
             // When
             Target.UserPressed(input);
@@ -49,9 +59,12 @@ namespace PtRpg.Tests.Unit.Acceptance
             const char input = 'a';
             int expectedMoney = 24;
 
-            var scenario = new MoneyScenario();
-            scenario.MoneyToSet = expectedMoney;
-            _scenarioSelector.BindScenario(input, scenario);
+            _bindings.Setup(b => b.Contains(input))
+                .Returns(true);
+            _bindings.Setup(b => b.GetName(input))
+                .Returns(_moneyScenario.GetType().Name);
+
+            _moneyScenario.MoneyToSet = expectedMoney;
 
             // When
             Target.UserPressed(input);

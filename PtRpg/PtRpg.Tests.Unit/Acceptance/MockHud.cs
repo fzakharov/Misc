@@ -13,7 +13,7 @@ namespace PtRpg.Tests.Unit.Acceptance
 
         public void Update(GameException ex)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

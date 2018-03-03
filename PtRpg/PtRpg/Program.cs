@@ -18,16 +18,16 @@ namespace PtRpg
             //.BuildServiceProvider();
 
 
-            var selector = new KeyScenarioSelector();
-            var hero = new HeroState();
-            selector.BindScenario('m', new MoneyScenario { MoneyToSet = 500 });
-            selector.BindScenario('h', new HealthScenario { HealthToSet = 42 });
-            var hud = new TextHud(Console.Out);
+            //var selector = new KeyScenarioSelector();
+            //var hero = new HeroState();
+            //selector.BindScenario('m', new MoneyScenario { MoneyToSet = 500 });
+            //selector.BindScenario('h', new HealthScenario { HealthToSet = 42 });
+            //var hud = new TextHud(Console.Out);
 
-            var game = new GameLoop(hud, hero, selector, new ConsoleInput());
+            //var game = new GameLoop(hud, hero, selector, new ConsoleInput());
 
-            while (true)
-                game.NextStep();
+            //while (true)
+            //    game.NextStep();
         }
     }
 }

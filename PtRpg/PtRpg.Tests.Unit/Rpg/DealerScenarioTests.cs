@@ -6,14 +6,14 @@ using FluentAssertions;
 namespace PtRpg.Tests.Unit
 {
     [TestFixture]
-    public class HealerScenarioTests : AutoMockerTestsBase<HealerScenario>
+    public class DealerScenarioTests : AutoMockerTestsBase<DealerScenario>
     {
         const int InitMoney = 3;
         const int InitHealth = 100;
-        const int MaxHealth = 110;
+        const int InitMaxHealth = 100;
         const double Probability = 0.5;
         private HeroState _hero;
-        HealerConditions _cond;
+        DealerConditions _cond;
 
         [SetUp]
         public void SetUp()
@@ -21,29 +21,35 @@ namespace PtRpg.Tests.Unit
             _hero = new HeroState
             {
                 Money = InitMoney,
-                MaxHealth = MaxHealth,
-                Health = InitHealth
+                Health = InitHealth,
+                MaxHealth = InitMaxHealth,
             };
 
-            _cond = Get<HealerConditions>();
+            _cond = Get<DealerConditions>();
         }
 
-        [TestCase(3, 10, 105, 0)]
-        [TestCase(3, 50, MaxHealth, 0)]
-        public void Should_calculate_health_When_Execute(int cost, int increase, int expectedHealth, int expectedMoney)
+        [Test]
+        public void Should_calculate_max_health_When_Execute()
         {
             // Given
-            _cond.Cost = cost;
-            _cond.MaxHealthIncrease = increase;
+            _cond.Cost = InitMoney;
+            _cond.MaxHealthMaxIncrease = 100;
+            _cond.MaxHealthMinIncrease = 0;
             GetMock<IRandom>().Setup(r => r.GenerateRealProbability())
                 .Returns(Probability);
+
+            int expectedMoney = 0;
+            int expectedMaxHealth =
+                InitMaxHealth +
+                (int)((_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) * Probability);
 
             // When
             Target.Execute(_hero);
 
             // Then
-            _hero.Health.Should().Be(expectedHealth);
+            _hero.MaxHealth.Should().Be(expectedMaxHealth);
             _hero.Money.Should().Be(expectedMoney);
+            _hero.Health.Should().Be(InitHealth);
         }
 
         [Test]
@@ -59,6 +65,7 @@ namespace PtRpg.Tests.Unit
             action.Should().Throw<GameException>();
             _hero.Money.Should().Be(InitMoney);
             _hero.Health.Should().Be(InitHealth);
+            _hero.MaxHealth.Should().Be(InitMaxHealth);
         }
     }
 }

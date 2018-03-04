@@ -26,13 +26,14 @@ namespace PtRpg
                 .AddSingleton<IBindings, GameConfigBindings>()
                 .AddSingleton<IScenarioSelector, TypeNameScenarioSelector>()
                 .AddSingleton<IScenario, HealerScenario>()
-                .AddSingleton<IScenario, MoneyScenario>()
+                .AddSingleton<IScenario, DealerScenario>()
                 .AddSingleton(random)
                 .AddSingleton(hud)
                 .AddSingleton(input)
                 .AddSingleton(Settings.Bindings)
                 .AddSingleton(Settings.Hero)
                 .AddSingleton(Settings.Healer)
+                .AddSingleton(Settings.Dealer)
                 .AddSingleton(Settings);
 
             return services.BuildServiceProvider().GetService<GameLoop>();

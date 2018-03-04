@@ -73,5 +73,33 @@ namespace PtRpg.Tests.Unit.Acceptance
             Target.Hero.Money
                 .Should().Be(expectedMoney);
         }
+
+        [Test]
+        public void Should_exec_weapon_scenario_When_ProcessInput_for_weapon()
+        {
+            // Given
+            var cond = Target.Settings.Weapon;
+            var hero = Target.Hero;
+            hero.Money = cond.Cost;
+
+            int expectedPower =
+                hero.Power + cond.PowerMinIncrease
+                + (int)((cond.PowerMaxIncrease - cond.PowerMinIncrease)
+                * Target.Random.RandomValue);
+
+            int expectedMoney = 0;
+
+            char input = Target.GetInputByScenario<WeaponScenario>();
+
+            // When
+            Target.UserPressed(input);
+
+            // Then
+            Target.Hero.Power
+                .Should().Be(expectedPower);
+
+            Target.Hero.Money
+                .Should().Be(expectedMoney);
+        }
     }
 }

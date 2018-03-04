@@ -6,6 +6,10 @@ namespace PtRpg.Tests.Unit.Acceptance
     {
         public HeroState Hero { get; private set; }
 
+        public void Show(IScenario scenario)
+        {
+        }
+
         public void Update(HeroState hero)
         {
             Hero = hero;

@@ -27,6 +27,7 @@ namespace PtRpg
                 .AddSingleton<IScenarioSelector, TypeNameScenarioSelector>()
                 .AddSingleton<IScenario, HealerScenario>()
                 .AddSingleton<IScenario, DealerScenario>()
+                .AddSingleton<IScenario, WeaponScenario>()
                 .AddSingleton(random)
                 .AddSingleton(hud)
                 .AddSingleton(input)
@@ -34,6 +35,7 @@ namespace PtRpg
                 .AddSingleton(Settings.Hero)
                 .AddSingleton(Settings.Healer)
                 .AddSingleton(Settings.Dealer)
+                .AddSingleton(Settings.Weapon)
                 .AddSingleton(Settings);
 
             return services.BuildServiceProvider().GetService<GameLoop>();

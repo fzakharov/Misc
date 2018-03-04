@@ -46,6 +46,7 @@ namespace PtRpg.Tests.Unit
 
             // Then
             _hud.Verify(h => h.Update(It.Is<GameException>(e => e.Message == ex.Message)));
+            _hud.Verify(h => h.Update(_hero));
         }
 
 
@@ -63,6 +64,7 @@ namespace PtRpg.Tests.Unit
             // Then
             _scenario.Verify(s => s.Execute(_hero));
             _hud.Verify(h => h.Update(_hero));
+            _hud.Verify(h => h.Show(_scenario.Object));
         }
     }
 }

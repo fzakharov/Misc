@@ -29,6 +29,7 @@
             catch (GameException ex)
             {
                 _hud.Update(ex);
+                _hud.Update(_hero);
             }
         }
     }

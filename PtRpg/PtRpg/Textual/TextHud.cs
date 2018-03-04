@@ -20,6 +20,7 @@ namespace PtRpg.Textual
             }
 
             _tw.Write($" - {scenario.GetType().Name}");
+            _tw.WriteLine();
         }
 
         public void Update(HeroState hero)
@@ -29,12 +30,12 @@ namespace PtRpg.Textual
                 throw new System.ArgumentNullException(nameof(hero));
             }
 
-            _tw.WriteLine();
             _tw.WriteLine($"MaxHealth: {hero.MaxHealth}");
             _tw.WriteLine($"Health: {hero.Health}");
             _tw.WriteLine($"Power: {hero.Power}");
             _tw.WriteLine($"Money: {hero.Money}");
             _tw.WriteLine($"Items: {hero.Items}");
+            _tw.WriteLine();
         }
 
         public void Update(GameException ex)
@@ -46,6 +47,7 @@ namespace PtRpg.Textual
 
             _tw.WriteLine();
             _tw.WriteLine(ex.Message);
+            _tw.WriteLine();
         }
     }
 }

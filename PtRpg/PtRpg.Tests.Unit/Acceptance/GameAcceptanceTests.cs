@@ -21,7 +21,7 @@ namespace PtRpg.Tests.Unit.Acceptance
         public void Should_change_health_to_expeted_When_ProcessInput()
         {
             // Given
-            const char input = 'w';
+            char input = Target.GetInputByScenario<HealthScenario>();
 
             // When
             Target.UserPressed(input);
@@ -39,7 +39,7 @@ namespace PtRpg.Tests.Unit.Acceptance
         public void Should_change_money_to_expeted_When_ProcessInput()
         {
             // Given
-            const char input = 's';
+            char input = Target.GetInputByScenario<MoneyScenario>();
 
             // When
             Target.UserPressed(input);

@@ -11,16 +11,19 @@ namespace PtRpg.Tests.Unit.Acceptance
         public GameTestsFacade()
         {
             _input = new TestInput();
+            Random = new StubRandom();
             Hud = new MockHud();
             var bootstrapper = new MsDiBootstrapper();
-            _game = bootstrapper.CreateGame(Hud, _input);
+            _game = bootstrapper.CreateGame(Hud, _input, Random);
             Hero = bootstrapper.Settings.Hero;
             Settings = bootstrapper.Settings;
         }
 
-        public HeroState Hero { get; internal set; }
-        public MockHud Hud { get; internal set; }
+        public HeroState Hero { get; }
+        public MockHud Hud { get; }
+        public StubRandom Random { get; }
         public GameConfiguration Settings { get; }
+
         public char GetInputByScenario<T>()
         {
             var scenarioName = typeof(T).Name;

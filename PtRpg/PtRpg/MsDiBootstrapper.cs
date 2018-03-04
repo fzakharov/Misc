@@ -15,7 +15,8 @@ namespace PtRpg
 
         public GameLoop CreateGame(
             IHud hud,
-            IInput input)
+            IInput input,
+            IRandom random)
         {
             Settings = LoadSettingsFromAppConfig();
 
@@ -26,10 +27,12 @@ namespace PtRpg
                 .AddSingleton<IScenarioSelector, TypeNameScenarioSelector>()
                 .AddSingleton<IScenario, HealerScenario>()
                 .AddSingleton<IScenario, MoneyScenario>()
+                .AddSingleton(random)
                 .AddSingleton(hud)
                 .AddSingleton(input)
                 .AddSingleton(Settings.Bindings)
                 .AddSingleton(Settings.Hero)
+                .AddSingleton(Settings.Healer)
                 .AddSingleton(Settings);
 
             return services.BuildServiceProvider().GetService<GameLoop>();

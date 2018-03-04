@@ -19,9 +19,19 @@ namespace PtRpg.Tests.Unit.Acceptance
 
 
         [Test]
-        public void Should_change_health_to_expeted_When_ProcessInput()
+        public void Should_change_health_to_expeted_When_ProcessInput_for_healer()
         {
             // Given
+            var cond = Target.Settings.Healer;
+            var hero = Target.Hero;
+            hero.Money = cond.Cost;
+            hero.MaxHealth += cond.MaxHealthIncrease;
+
+            int expectedHealth =
+                hero.Health + (int)(cond.MaxHealthIncrease * Target.Random.RandomValue);
+
+            int expectedMoney = 0;
+
             char input = Target.GetInputByScenario<HealerScenario>();
 
             // When
@@ -29,10 +39,10 @@ namespace PtRpg.Tests.Unit.Acceptance
 
             // Then
             Target.Hero.Health
-                .Should().Be(Target.Settings.HealthToSet);
+                .Should().Be(expectedHealth);
 
-            Target.Hud.Hero
-                .Should().Be(Target.Hero);
+            Target.Hero.Money
+                .Should().Be(expectedMoney);
         }
 
 
@@ -48,9 +58,6 @@ namespace PtRpg.Tests.Unit.Acceptance
             // Then
             Target.Hero.Money
                 .Should().Be(Target.Settings.MoneyToSet);
-
-            Target.Hud.Hero
-                .Should().Be(Target.Hero);
         }
     }
 }

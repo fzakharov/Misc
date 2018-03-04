@@ -24,6 +24,7 @@ namespace PtRpg.Textual
 
         public void Update(GameException ex)
         {
+            _tw.WriteLine();
             _tw.WriteLine(ex.Message);
         }
     }

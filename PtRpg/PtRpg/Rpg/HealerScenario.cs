@@ -2,11 +2,11 @@
 
 namespace PtRpg.Rpg
 {
-    public class HealthScenario : IScenario
+    public class HealerScenario : IScenario
     {
         private readonly GameConfiguration _configuration;
 
-        public HealthScenario(GameConfiguration configuration)
+        public HealerScenario(GameConfiguration configuration)
         {
             _configuration = configuration;
         }

@@ -17,11 +17,12 @@ namespace PtRpg.Tests.Unit.Acceptance
             Target = new GameTestsFacade();
         }
 
+
         [Test]
         public void Should_change_health_to_expeted_When_ProcessInput()
         {
             // Given
-            char input = Target.GetInputByScenario<HealthScenario>();
+            char input = Target.GetInputByScenario<HealerScenario>();
 
             // When
             Target.UserPressed(input);

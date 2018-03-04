@@ -14,7 +14,12 @@ namespace PtRpg.Textual
 
         public void Update(HeroState hero)
         {
-            _tw.WriteLine("Health: {0}\nMoney: {1}", hero.Health, hero.Money);
+            _tw.WriteLine();
+            _tw.WriteLine($"MaxHealth: {hero.MaxHealth}");
+            _tw.WriteLine($"Health: {hero.Health}");
+            _tw.WriteLine($"Power: {hero.Power}");
+            _tw.WriteLine($"Money: {hero.Money}");
+            _tw.WriteLine($"Items: {hero.Items}");
         }
 
         public void Update(GameException ex)

@@ -1,4 +1,6 @@
-﻿namespace PtRpg.Engine
+﻿using PtRpg.Engine;
+
+namespace PtRpg
 {
     public class GameConfiguration
     {

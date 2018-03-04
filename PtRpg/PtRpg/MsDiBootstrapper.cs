@@ -24,7 +24,7 @@ namespace PtRpg
                 .AddSingleton<GameLoop>()
                 .AddSingleton<IBindings, GameConfigBindings>()
                 .AddSingleton<IScenarioSelector, TypeNameScenarioSelector>()
-                .AddSingleton<IScenario, HealthScenario>()
+                .AddSingleton<IScenario, HealerScenario>()
                 .AddSingleton<IScenario, MoneyScenario>()
                 .AddSingleton(hud)
                 .AddSingleton(input)

@@ -28,7 +28,9 @@ namespace PtRpg.Rpg
                 (int)((_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) *
                     _random.GenerateRealProbability()
                 );
+
             hero.Money -= _cond.Cost;
+            hero.Items++;
         }
     }
 }

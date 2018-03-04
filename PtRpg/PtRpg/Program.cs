@@ -10,6 +10,7 @@ namespace PtRpg
         static void Main(string[] args)
         {
             var boot = new MsDiBootstrapper();
+
             var game = boot.CreateGame(
                 new TextHud(Console.Out),
                 new ConsoleInput(),

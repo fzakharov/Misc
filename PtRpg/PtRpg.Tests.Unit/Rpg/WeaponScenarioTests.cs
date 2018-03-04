@@ -10,6 +10,7 @@ namespace PtRpg.Tests.Unit
     {
         const int InitMoney = 3;
         const int InitPower = 1;
+        const int InitItems = 0;
         const double Probability = 0.5;
         private HeroState _hero;
         WeaponConditions _cond;
@@ -21,6 +22,7 @@ namespace PtRpg.Tests.Unit
             {
                 Money = InitMoney,
                 Power = InitPower,
+                Items = InitItems
             };
 
             _cond = Get<WeaponConditions>();
@@ -47,6 +49,7 @@ namespace PtRpg.Tests.Unit
             // Then
             _hero.Power.Should().Be(expectedPower);
             _hero.Money.Should().Be(expectedMoney);
+            _hero.Items.Should().Be(InitItems + 1);
         }
 
         [Test]
@@ -62,6 +65,7 @@ namespace PtRpg.Tests.Unit
             action.Should().Throw<GameException>();
             _hero.Money.Should().Be(InitMoney);
             _hero.Power.Should().Be(InitPower);
+            _hero.Items.Should().Be(InitItems);
         }
     }
 }

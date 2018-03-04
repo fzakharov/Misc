@@ -13,10 +13,7 @@ namespace PtRpg
 
         public GameConfiguration Settings { get; private set; }
 
-        public GameLoop CreateGame(
-            IHud hud,
-            IInput input,
-            IRandom random)
+        public GameLoop CreateGame(IHud hud, IInput input, IRandom random)
         {
             Settings = LoadSettingsFromAppConfig();
 
@@ -28,6 +25,8 @@ namespace PtRpg
                 .AddSingleton<IScenario, HealerScenario>()
                 .AddSingleton<IScenario, DealerScenario>()
                 .AddSingleton<IScenario, WeaponScenario>()
+                .AddSingleton<IScenario, MonsterScenario>()
+                .AddSingleton<IMonster, DefaultMonster>()
                 .AddSingleton(random)
                 .AddSingleton(hud)
                 .AddSingleton(input)
@@ -36,6 +35,7 @@ namespace PtRpg
                 .AddSingleton(Settings.Healer)
                 .AddSingleton(Settings.Dealer)
                 .AddSingleton(Settings.Weapon)
+                .AddSingleton(Settings.Monster)
                 .AddSingleton(Settings);
 
             return services.BuildServiceProvider().GetService<GameLoop>();

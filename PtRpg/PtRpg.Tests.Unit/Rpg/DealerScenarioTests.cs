@@ -11,6 +11,7 @@ namespace PtRpg.Tests.Unit
         const int InitMoney = 3;
         const int InitHealth = 100;
         const int InitMaxHealth = 100;
+        const int InitItems = 0;
         const double Probability = 0.5;
         private HeroState _hero;
         DealerConditions _cond;
@@ -23,6 +24,7 @@ namespace PtRpg.Tests.Unit
                 Money = InitMoney,
                 Health = InitHealth,
                 MaxHealth = InitMaxHealth,
+                Items = InitItems
             };
 
             _cond = Get<DealerConditions>();
@@ -50,6 +52,7 @@ namespace PtRpg.Tests.Unit
             _hero.MaxHealth.Should().Be(expectedMaxHealth);
             _hero.Money.Should().Be(expectedMoney);
             _hero.Health.Should().Be(InitHealth);
+            _hero.Items.Should().Be(InitItems + 1);
         }
 
         [Test]
@@ -66,6 +69,7 @@ namespace PtRpg.Tests.Unit
             _hero.Money.Should().Be(InitMoney);
             _hero.Health.Should().Be(InitHealth);
             _hero.MaxHealth.Should().Be(InitMaxHealth);
+            _hero.Items.Should().Be(InitItems);
         }
     }
 }

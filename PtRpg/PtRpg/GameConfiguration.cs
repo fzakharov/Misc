@@ -10,6 +10,7 @@ namespace PtRpg
         public HealerConditions Healer { get; set; }
         public DealerConditions Dealer { get; set; }
         public WeaponConditions Weapon { get; set; }
+        public MonsterConditions Monster { get; set; }
 
         public KeyBinding[] Bindings { get; set; }
     }

@@ -28,6 +28,7 @@ namespace PtRpg.Rpg
                     _random.GenerateRealProbability()
                 );
             hero.Money -= _cond.Cost;
+            hero.Items++;
         }
     }
 }

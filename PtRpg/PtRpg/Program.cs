@@ -26,11 +26,11 @@ namespace PtRpg
             };
 
             var bs = new MsDiBootstrapper();
-            var game = bs.CreateServiceProvider(
-                hero,
-                new TextHud(Console.Out),
-                new ConsoleInput(),
-                config).GetService<GameLoop>();
+            var game = bs.CreateGame(
+                                hero,
+                                new TextHud(Console.Out),
+                                new ConsoleInput(),
+                                config);
 
             while (true)
                 game.NextStep();

@@ -2,16 +2,16 @@
 
 namespace PtRpg.Tests.Unit.Acceptance
 {
-    public class TestInput : IInput, IInputWriter
+    public class TestInput : IInput
     {
-        int _input;
+        char _input;
 
-        public int Read()
+        public char Read()
         {
             return _input;
         }
 
-        public void Write(int c)
+        public void Write(char c)
         {
             _input = c;
         }

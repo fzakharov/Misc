@@ -6,7 +6,7 @@ namespace PtRpg
 {
     public class MsDiBootstrapper
     {
-        public ServiceProvider CreateServiceProvider(
+        public GameLoop CreateGame(
             HeroState hero,
             IHud hud,
             IInput input,
@@ -24,7 +24,7 @@ namespace PtRpg
                 .AddSingleton(input)
                 .AddSingleton(conig);
 
-            return serviceCollection.BuildServiceProvider();
+            return serviceCollection.BuildServiceProvider().GetService<GameLoop>();
         }
     }
 }

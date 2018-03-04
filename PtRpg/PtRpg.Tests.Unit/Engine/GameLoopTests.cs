@@ -8,7 +8,7 @@ namespace PtRpg.Tests.Unit
     [TestFixture]
     public class GameLoopTests : AutoMockerTestsBase<GameLoop>
     {
-        private int _key;
+        private char _key;
         private Mock<IInput> _input;
         private Mock<IScenario> _scenario;
         private Mock<IHud> _hud;
@@ -18,7 +18,7 @@ namespace PtRpg.Tests.Unit
         [SetUp]
         public void SetUp()
         {
-            _key = 42;
+            _key = 'w';
             _input = GetMock<IInput>();
             _scenario = GetMock<IScenario>();
             _hud = GetMock<IHud>();

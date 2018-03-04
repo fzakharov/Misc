@@ -5,7 +5,7 @@ namespace PtRpg
 {
     public class ConsoleInput : IInput
     {
-        public int Read()
+        public char Read()
         {
             return Console.ReadKey().KeyChar;
         }

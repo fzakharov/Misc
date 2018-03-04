@@ -16,13 +16,13 @@ namespace PtRpg
             _bindings = bindings;
         }
 
-        public IScenario GetByInput(int input)
+        public IScenario GetByInput(char input)
         {
-            if (!_bindings.Contains((char)input)) // todo fix int to char cast
+            if (!_bindings.Contains(input))
                 throw new GameException(
-                    $"Unsupported command '{char.ConvertFromUtf32(input)}'");
+                    $"Unsupported command '{input}'");
 
-            var name = _bindings.GetName((char)input);
+            var name = _bindings.GetName(input);
             foreach (var item in _scenarios)
             {
                 if (item.GetType().Name == name)

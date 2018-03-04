@@ -2,6 +2,6 @@
 {
     public interface IScenarioSelector
     {
-        IScenario GetByInput(int input);
+        IScenario GetByInput(char input);
     }
 }

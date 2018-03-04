@@ -2,15 +2,16 @@
 {
     public class GameConfiguration
     {
-        public int HealthToSet = 42;
-        public int MoneyToSet = 500;
+        public HeroState Hero { get; set; }
+        public int HealthToSet { get; set; }
+        public int MoneyToSet { get; set; }
 
-        public KeyBinding[] Bindings = new KeyBinding[0];
+        public KeyBinding[] Bindings { get; set; }
     }
 
     public class KeyBinding
     {
-        public char Key;
-        public string ScenarioTypeName;
+        public char Key { get; set; }
+        public string ScenarioTypeName { get; set; }
     }
 }

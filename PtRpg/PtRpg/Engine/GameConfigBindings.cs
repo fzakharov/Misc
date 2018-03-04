@@ -2,16 +2,16 @@
 {
     public class GameConfigBindings : IBindings
     {
-        private readonly GameConfiguration _config;
+        private readonly KeyBinding[] _bindings;
 
         public GameConfigBindings(GameConfiguration config)
         {
-            _config = config;
+            _bindings = config.Bindings ?? new KeyBinding[0];
         }
 
         public bool Contains(char input)
         {
-            foreach (var b in _config.Bindings)
+            foreach (var b in _bindings)
             {
                 if (b.Key == input)
                     return true;
@@ -22,7 +22,7 @@
 
         public string GetName(char input)
         {
-            foreach (var b in _config.Bindings)
+            foreach (var b in _bindings)
             {
                 if (b.Key == input)
                     return b.ScenarioTypeName;

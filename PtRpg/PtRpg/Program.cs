@@ -9,27 +9,8 @@ namespace PtRpg
     {
         static void Main(string[] args)
         {
-            var hero = new HeroState();
-            GameConfiguration config = new GameConfiguration
-            {
-                Bindings = new[] {
-                    new KeyBinding{
-                        Key = 'h',
-                        ScenarioTypeName = typeof(HealthScenario).Name
-                    },
-                    new KeyBinding{
-                        Key = 'm',
-                        ScenarioTypeName = typeof(MoneyScenario).Name
-                    }
-                }
-            };
-
-            var bs = new MsDiBootstrapper();
-            var game = bs.CreateGame(
-                                hero,
-                                new TextHud(Console.Out),
-                                new ConsoleInput(),
-                                config);
+            var boot = new MsDiBootstrapper();
+            var game = boot.CreateGame(new TextHud(Console.Out), new ConsoleInput());
 
             while (true)
                 game.NextStep();

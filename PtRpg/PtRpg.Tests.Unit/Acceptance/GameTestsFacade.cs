@@ -7,18 +7,19 @@ namespace PtRpg.Tests.Unit.Acceptance
         private TestInput _input;
         private GameLoop _game;
 
-        public GameTestsFacade(GameConfiguration configuration)
+        public GameTestsFacade()
         {
-            Hero = new HeroState();
-            Hud = new MockHud();
             _input = new TestInput();
+            Hud = new MockHud();
             var bootstrapper = new MsDiBootstrapper();
-            _game = bootstrapper.CreateGame(Hero, Hud, _input, configuration);
-
+            _game = bootstrapper.CreateGame(Hud, _input);
+            Hero = bootstrapper.Settings.Hero;
+            Settings = bootstrapper.Settings;
         }
 
         public HeroState Hero { get; internal set; }
         public MockHud Hud { get; internal set; }
+        public GameConfiguration Settings { get; }
 
         public void UserPressed(char c)
         {

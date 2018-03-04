@@ -55,7 +55,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             hero.Money = cond.Cost;
 
             int expectedMaxHealth =
-                hero.MaxHealth
+                hero.MaxHealth + cond.MaxHealthMinIncrease
                 + (int)((cond.MaxHealthMaxIncrease - cond.MaxHealthMinIncrease)
                 * Target.Random.RandomValue);
 

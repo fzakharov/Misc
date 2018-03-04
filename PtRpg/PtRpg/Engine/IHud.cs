@@ -7,5 +7,6 @@ namespace PtRpg.Engine
         // todo show help
         void Update(HeroState hero);
         void Update(GameException ex);
+        void Show(IScenario scenario);
     }
 }

@@ -22,10 +22,11 @@
             {
                 var input = _input.Read();
                 var scenario = _selector.GetByInput(input);
+                _hud.Show(scenario);
                 scenario.Execute(_hero);
                 _hud.Update(_hero);
             }
-            catch(GameException ex)
+            catch (GameException ex)
             {
                 _hud.Update(ex);
             }

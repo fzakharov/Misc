@@ -38,10 +38,10 @@ namespace PtRpg.Tests.Unit
             GetMock<IRandom>().Setup(r => r.GenerateRealProbability())
                 .Returns(Probability);
 
-            int expectedMoney = 0;
-            int expectedMaxHealth =
-                InitMaxHealth +
+            int expectedMaxHealth = InitMaxHealth + _cond.MaxHealthMinIncrease +
                 (int)((_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) * Probability);
+
+            int expectedMoney = 0;
 
             // When
             Target.Execute(_hero);

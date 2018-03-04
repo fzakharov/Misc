@@ -24,8 +24,8 @@ namespace PtRpg.Rpg
             if (_cond.Cost > hero.Money)
                 throw new GameException($"Not enough money. Cost: {_cond.Cost}.");
 
-            hero.MaxHealth += (int)(
-                    (_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) *
+            hero.MaxHealth = hero.MaxHealth + _cond.MaxHealthMinIncrease +
+                (int)((_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) *
                     _random.GenerateRealProbability()
                 );
             hero.Money -= _cond.Cost;

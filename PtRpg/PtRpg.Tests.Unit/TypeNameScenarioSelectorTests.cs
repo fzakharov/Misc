@@ -9,47 +9,9 @@ using System.Linq;
 
 namespace PtRpg.Tests.Unit
 {
-    public class ClientClass
-    {
-        public ClientClass(IEnumerable<IScenario> scenarios)
-        {
-            Scenarios = scenarios.ToArray();
-        }
-
-        public IScenario[] Scenarios { get; }
-    }
-
     [TestFixture]
-    public class KeyScenarioSelectorTests : AutoMockerTestsBase<KeyScenarioSelector>
+    public class TypeNameScenarioSelectorTests : AutoMockerTestsBase<TypeNameScenarioSelector>
     {
-
-
-        //[Test]
-        //public void Should__When_()
-        //{
-        //    var serviceCollection = new ServiceCollection();
-        //    serviceCollection.AddSingleton<IScenario, HealthScenario>();
-        //    serviceCollection.AddSingleton<IScenario, MoneyScenario>();
-        //    serviceCollection.AddSingleton<ClientClass>();
-
-        //    var prov = serviceCollection.BuildServiceProvider();
-
-        //    var cc = prov.GetService<ClientClass>();
-
-        //    var sc = prov.GetServices<IScenario>();
-
-        //    cc.Scenarios.Should().HaveCount(2);
-
-        //}
-
-
-
-        [SetUp]
-        public void SetUp()
-        {
-
-        }
-
         [Test]
         public void Should_return_expected_scenario_When_GetByInput()
         {

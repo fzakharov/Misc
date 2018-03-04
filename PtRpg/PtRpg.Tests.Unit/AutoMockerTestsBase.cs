@@ -15,7 +15,7 @@ namespace PtRpg.Tests.Unit
         {
             _target = null;
             _autoMock = new AutoMocker();
-            
+
         }
 
         public T Target
@@ -29,14 +29,19 @@ namespace PtRpg.Tests.Unit
             }
         }
 
-        public Mock<TMock> GetMock<TMock>() where TMock : class
+        public TService Get<TService>()
         {
-            return _autoMock.GetMock<TMock>();
+            return _autoMock.Get<TService>();
+        }
+
+        public Mock<TService> GetMock<TService>() where TService : class
+        {
+            return _autoMock.GetMock<TService>();
         }
 
         public void Use<TService>(TService service)
         {
-            _autoMock.Use<TService>(service);
+            _autoMock.Use(service);
         }
     }
 }

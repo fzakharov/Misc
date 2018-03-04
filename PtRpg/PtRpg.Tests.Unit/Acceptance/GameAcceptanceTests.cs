@@ -10,15 +10,12 @@ namespace PtRpg.Tests.Unit.Acceptance
     public class GameAcceptanceTests
     {
         public GameTestsFacade Target { get; private set; }
-        Mock<IBindings> _bindings = new Mock<IBindings>();
         GameConfiguration _config = new GameConfiguration();
 
         [SetUp]
         public void SetUp()
         {
-            Target = new GameTestsFacade(
-                _bindings.Object,
-                _config);
+            Target = new GameTestsFacade(_config);
         }
 
         [Test]
@@ -62,10 +59,10 @@ namespace PtRpg.Tests.Unit.Acceptance
 
         void SetupBindings<T>(char input)
         {
-            _bindings.Setup(b => b.Contains(input))
-                .Returns(true);
-            _bindings.Setup(b => b.GetName(input))
-                .Returns(typeof(T).Name);
+            _config.Bindings = new[] { new KeyBinding {
+                Key = input,
+                ScenarioTypeName = typeof(T).Name
+            } };
         }
     }
 }

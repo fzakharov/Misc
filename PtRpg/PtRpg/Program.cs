@@ -10,24 +10,30 @@ namespace PtRpg
     {
         static void Main(string[] args)
         {
+            var hero = new HeroState();
+            GameConfiguration config = new GameConfiguration
+            {
+                Bindings = new[] {
+                    new KeyBinding{
+                        Key = 'h',
+                        ScenarioTypeName = typeof(HealthScenario).Name
+                    },
+                    new KeyBinding{
+                        Key = 'm',
+                        ScenarioTypeName = typeof(MoneyScenario).Name
+                    }
+                }
+            };
 
+            var bs = new MsDiBootstrapper();
+            var game = bs.CreateServiceProvider(
+                hero,
+                new TextHud(Console.Out),
+                new ConsoleInput(),
+                config).GetService<GameLoop>();
 
-            //var serviceProvider = new ServiceCollection()
-            //.AddSingleton<IFooService, FooService>()
-            //.AddSingleton<IBarService, BarService>()
-            //.BuildServiceProvider();
-
-
-            //var selector = new KeyScenarioSelector();
-            //var hero = new HeroState();
-            //selector.BindScenario('m', new MoneyScenario { MoneyToSet = 500 });
-            //selector.BindScenario('h', new HealthScenario { HealthToSet = 42 });
-            //var hud = new TextHud(Console.Out);
-
-            //var game = new GameLoop(hud, hero, selector, new ConsoleInput());
-
-            //while (true)
-            //    game.NextStep();
+            while (true)
+                game.NextStep();
         }
     }
 }

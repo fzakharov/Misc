@@ -121,38 +121,5 @@ namespace PtRpg.Tests.Unit.Acceptance
             Target.Hero.Health.Should().Be(expectedHealth);
             Target.Hero.Money.Should().Be(expectedMoney);
         }
-
-        //[Test]
-        //public void Should_restart_game_When_ProcessInput_for_dead_hero()
-        //{
-        //    // Given
-        //    var cond = Target.Settings.Monster;
-        //    var hero = Target.Hero;
-
-        //    HeroState expectedHero = new HeroState
-        //    {
-        //        Health = hero.Health,
-        //        Items = hero.Items,
-        //        MaxHealth = hero.MaxHealth,
-        //        Money = hero.Money,
-        //        Power = hero.Power
-        //    };
-
-        //    hero.Health = 10;
-        //    hero.Items = 42;
-        //    hero.MaxHealth = 42;
-        //    hero.Money = 42;
-        //    hero.Power = 42;
-
-        //    Target.Random.RandomValue = 0.1;
-
-        //    char input = Target.GetInputByScenario<MonsterScenario>();
-
-        //    // When
-        //    Target.UserPressed(input);
-
-        //    // Then
-        //    hero.Should().BeEquivalentTo(expectedHero);
-        //}
     }
 }

@@ -6,28 +6,8 @@ using FluentAssertions;
 namespace PtRpg.Tests.Unit
 {
     [TestFixture]
-    public class DealerScenarioTests : AutoMockerTestsBase<DealerScenario>
+    public class DealerScenarioTests : MoneyScenarioTestsBase<DealerScenario, DealerConditions>
     {
-        const int InitMoney = 3;
-        const int InitHealth = 100;
-        const int InitMaxHealth = 100;
-        const double Probability = 0.5;
-        private HeroState _hero;
-        DealerConditions _cond;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _hero = new HeroState
-            {
-                Money = InitMoney,
-                Health = InitHealth,
-                MaxHealth = InitMaxHealth,
-            };
-
-            _cond = Get<DealerConditions>();
-        }
-
         [Test]
         public void Should_calculate_max_health_When_Execute()
         {
@@ -55,17 +35,8 @@ namespace PtRpg.Tests.Unit
         [Test]
         public void Should_throw_GameEx_When_Execute_with_not_enough_money()
         {
-            // Given
-            _cond.Cost = InitMoney + 1;
-
-            // When
-            var action = Target.Invoking(t => t.Execute(_hero));
-
-            // Then
-            action.Should().Throw<GameException>();
-            _hero.Money.Should().Be(InitMoney);
-            _hero.Health.Should().Be(InitHealth);
-            _hero.MaxHealth.Should().Be(InitMaxHealth);
+            // Given // When // Then
+            TestCase_Should_throw_GameEx_When_Execute_with_not_enough_money();
         }
     }
 }

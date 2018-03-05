@@ -14,7 +14,9 @@ namespace PtRpg.Tests.Unit
 
         protected const int InitMoney = 3;
         protected const int InitHealth = 100;
-        protected const int InitMaxHealth = 100;
+        protected const int InitMaxHealth = 110;
+        protected const int InitPower = 1;
+        protected const int InitItems = 1;
         protected const double Probability = 0.5;
 
         [SetUp]
@@ -25,6 +27,8 @@ namespace PtRpg.Tests.Unit
                 Money = InitMoney,
                 Health = InitHealth,
                 MaxHealth = InitMaxHealth,
+                Power = InitPower,
+                Items = InitItems
             };
 
             _cond = Get<TCond>();
@@ -40,9 +44,12 @@ namespace PtRpg.Tests.Unit
 
             // Then
             action.Should().Throw<GameException>();
+
             _hero.Money.Should().Be(InitMoney);
             _hero.Health.Should().Be(InitHealth);
             _hero.MaxHealth.Should().Be(InitMaxHealth);
+            _hero.Power.Should().Be(InitPower);
+            _hero.Items.Should().Be(InitItems);
         }
     }
 }

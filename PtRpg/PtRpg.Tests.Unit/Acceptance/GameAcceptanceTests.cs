@@ -1,7 +1,5 @@
 using FluentAssertions;
-using Moq;
 using NUnit.Framework;
-using PtRpg.Engine;
 using PtRpg.Rpg;
 
 namespace PtRpg.Tests.Unit.Acceptance
@@ -100,6 +98,26 @@ namespace PtRpg.Tests.Unit.Acceptance
 
             Target.Hero.Money
                 .Should().Be(expectedMoney);
+        }
+
+        [Test]
+        public void Should_exec_monster_scenario_When_ProcessInput_for_monster()
+        {
+            // Given
+            var cond = Target.Settings.Monster;
+            var hero = Target.Hero;
+            int expectedHealth = hero.Health - cond.WinHealthLost;
+            int expectedMoney = hero.Money + cond.WinMoney;
+            Target.Random.RandomValue = 0.1;
+
+            char input = Target.GetInputByScenario<MonsterScenario>();
+
+            // When
+            Target.UserPressed(input);
+
+            // Then
+            Target.Hero.Health.Should().Be(expectedHealth);
+            Target.Hero.Money.Should().Be(expectedMoney);
         }
     }
 }

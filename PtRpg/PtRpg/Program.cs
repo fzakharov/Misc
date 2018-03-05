@@ -1,5 +1,4 @@
 ﻿using PtRpg.Engine;
-using PtRpg.Rpg;
 using PtRpg.Textual;
 using System;
 
@@ -11,13 +10,21 @@ namespace PtRpg
         {
             var boot = new MsDiBootstrapper();
 
-            var game = boot.CreateGame(
-                new TextHud(Console.Out),
-                new ConsoleInput(),
-                new DotNetRandom());
+            Console.Write("Start game? (y = yes):");
+            var key = Console.ReadLine();
 
-            while (true)
-                game.NextStep();
+            while (key == "y")
+            {
+                var game = boot.CreateGame(
+                    new TextHud(Console.Out),
+                    new ConsoleInput(),
+                    new DotNetRandom());
+
+                while (game.NextStep()) ;
+
+                Console.Write("You dead. Restart game? (y = yes):");
+                key = Console.ReadLine();
+            }
         }
     }
 }

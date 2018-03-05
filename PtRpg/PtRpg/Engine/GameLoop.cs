@@ -16,7 +16,7 @@
             _input = input;
         }
 
-        public void NextStep()
+        public bool NextStep()
         {
             try
             {
@@ -31,6 +31,8 @@
                 _hud.Update(ex);
                 _hud.Update(_hero);
             }
+
+            return _hero.Health > 0;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using FluentAssertions;
+using Moq;
 using NUnit.Framework;
 using PtRpg.Engine;
 using System.Collections.Generic;
@@ -37,8 +38,7 @@ namespace PtRpg.Tests.Unit
             // Given
             var ex = new GameException("expected message");
 
-            _selector
-                .Setup(s => s.GetByInput(_key))
+            _selector.Setup(s => s.GetByInput(_key))
                 .Throws(ex);
 
             // When
@@ -49,13 +49,31 @@ namespace PtRpg.Tests.Unit
             _hud.Verify(h => h.Update(_hero));
         }
 
+        [TestCase(100, true)]
+        [TestCase(0, false)]
+        [TestCase(-1, false)]
+        public void Should_return_next_step_available_When_NextStep(int healthAfterScenario, bool nextStep)
+        {
+            // Given
+            _selector.Setup(s => s.GetByInput(_key))
+                .Returns(_scenario.Object);
+
+            _scenario.Setup(s => s.Execute(_hero))
+                .Callback<HeroState>(h => h.Health = healthAfterScenario);
+
+            // When
+            bool result = Target.NextStep();
+
+            // Then
+            _hud.Verify(h => h.Update(_hero));
+            result.Should().Be(nextStep);
+        }
 
         [Test]
         public void Should_execute_scenario_and_updates_hud_When_NextStep()
         {
             // Given
-            _selector
-                .Setup(s => s.GetByInput(_key))
+            _selector.Setup(s => s.GetByInput(_key))
                 .Returns(_scenario.Object);
 
             // When

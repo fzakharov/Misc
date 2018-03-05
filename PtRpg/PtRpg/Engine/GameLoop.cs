@@ -1,6 +1,5 @@
 ﻿namespace PtRpg.Engine
 {
-
     public class GameLoop
     {
         private readonly IHud _hud;
@@ -20,19 +19,24 @@
         {
             try
             {
+                _hud.Update(_hero);
                 var input = _input.Read();
                 var scenario = _selector.GetByInput(input);
                 _hud.Show(scenario);
                 scenario.Execute(_hero);
-                _hud.Update(_hero);
             }
             catch (GameException ex)
             {
                 _hud.Update(ex);
-                _hud.Update(_hero);
             }
 
-            return _hero.Health > 0;
+            if (_hero.Health <= 0)
+            {
+                _hud.Update(_hero);
+                return false;
+            }
+
+            return true;
         }
     }
 }

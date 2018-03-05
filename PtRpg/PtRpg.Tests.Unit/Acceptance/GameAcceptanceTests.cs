@@ -1,8 +1,6 @@
 using FluentAssertions;
 using NUnit.Framework;
-using PtRpg.Engine;
 using PtRpg.Rpg;
-using System;
 
 namespace PtRpg.Tests.Unit.Acceptance
 {

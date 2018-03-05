@@ -36,5 +36,12 @@ namespace PtRpg.Rpg
         {
             hero.Money -= _cond.Cost;
         }
+
+        public static int CalcNewValueInRangeWithProbability(int value, int minIncrease, int maxIncrease, double probability)
+        {
+            return value + minIncrease +
+                (int)((maxIncrease - minIncrease) *
+                    probability);
+        }
     }
 }

@@ -15,8 +15,13 @@ namespace PtRpg.Rpg
 
         protected override void ExecuteScenario(HeroState hero)
         {
-            var delta = _cond.MaxHealthIncrease * _random.GenerateRealProbability();
-            hero.Health = Math.Min(hero.Health + (int)delta, hero.MaxHealth);
+            hero.Health = CalcNewValueInRangeWithProbability(
+                hero.Health,
+                0,
+                _cond.MaxHealthIncrease,
+                _random.GenerateRealProbability());
+
+            hero.Health = Math.Min(hero.Health, hero.MaxHealth);
         }
     }
 }

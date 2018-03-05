@@ -14,9 +14,11 @@ namespace PtRpg.Rpg
 
         protected override void ExecuteScenario(HeroState hero)
         {
-            hero.MaxHealth = hero.MaxHealth + _cond.MaxHealthMinIncrease +
-                (int)((_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) *
-                    _random.GenerateRealProbability());
+            hero.MaxHealth = CalcNewValueInRangeWithProbability(
+                hero.MaxHealth,
+                _cond.MaxHealthMinIncrease,
+                _cond.MaxHealthMaxIncrease,
+                _random.GenerateRealProbability());
         }
     }
 }

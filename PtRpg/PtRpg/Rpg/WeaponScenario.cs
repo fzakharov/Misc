@@ -14,9 +14,11 @@ namespace PtRpg.Rpg
 
         protected override void ExecuteScenario(HeroState hero)
         {
-            hero.Power = hero.Power + _cond.PowerMinIncrease +
-                (int)((_cond.PowerMaxIncrease - _cond.PowerMinIncrease) *
-                    _random.GenerateRealProbability());
+            hero.Power = CalcNewValueInRangeWithProbability(
+                hero.Power, 
+                _cond.PowerMinIncrease, 
+                _cond.PowerMaxIncrease, 
+                _random.GenerateRealProbability());
         }
     }
 }

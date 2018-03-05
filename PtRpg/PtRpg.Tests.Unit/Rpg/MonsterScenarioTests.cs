@@ -2,7 +2,6 @@
 using PtRpg.Engine;
 using PtRpg.Rpg;
 using FluentAssertions;
-using Moq;
 
 namespace PtRpg.Tests.Unit
 {
@@ -24,7 +23,7 @@ namespace PtRpg.Tests.Unit
                 Health = InitHealth
             };
 
-            _cond = new MonsterConditions();
+            _cond = Get<MonsterConditions>();
         }
 
         void SetupMonsterWon(bool isMonsterWon)
@@ -41,9 +40,10 @@ namespace PtRpg.Tests.Unit
             _cond.WinMoney = 5;
             _cond.WinHealthLost = 10;
             int expectedMoney = InitMoney + _cond.WinMoney;
-            int expectedHealth = InitHealth + _cond.WinHealthLost;
+            int expectedHealth = InitHealth - _cond.WinHealthLost;
 
-            SetupMonsterWon(true);
+            SetupMonsterWon(false);
+
             // When
             Target.Execute(_hero);
 
@@ -60,6 +60,7 @@ namespace PtRpg.Tests.Unit
             int expectedHealth = InitHealth - _cond.LossHealthLost;
 
             SetupMonsterWon(true);
+
             // When
             Target.Execute(_hero);
 

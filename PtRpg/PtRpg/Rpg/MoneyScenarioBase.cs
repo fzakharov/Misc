@@ -39,6 +39,7 @@ namespace PtRpg.Rpg
 
         public static int CalcNewValueInRangeWithProbability(int value, int minIncrease, int maxIncrease, double probability)
         {
+            // todo BUG need to use round
             return value + minIncrease +
                 (int)((maxIncrease - minIncrease) *
                     probability);

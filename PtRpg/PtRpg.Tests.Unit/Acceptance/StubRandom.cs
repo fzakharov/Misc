@@ -4,11 +4,11 @@ namespace PtRpg.Tests.Unit.Acceptance
 {
     public class StubRandom : IRandom
     {
-        public double RandomValue { get; set; } = 0.5;
+        public double RealProbability { get; set; } = 0.5;
 
         public double GenerateRealProbability()
         {
-            return RandomValue;
+            return RealProbability;
         }
     }
 }

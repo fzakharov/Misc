@@ -2,6 +2,7 @@
 using PtRpg.Engine;
 using PtRpg.Rpg;
 using FluentAssertions;
+using System;
 
 namespace PtRpg.Tests.Unit
 {
@@ -18,8 +19,9 @@ namespace PtRpg.Tests.Unit
             GetMock<IRandom>().Setup(r => r.GenerateRealProbability())
                 .Returns(Probability);
 
-            int expectedPower = InitPower + _cond.PowerMinIncrease +
-                (int)((_cond.PowerMaxIncrease - _cond.PowerMinIncrease) * Probability);
+            var delta = CalcDeltaWithProbability(_cond.PowerMinIncrease, _cond.PowerMaxIncrease);
+
+            int expectedPower = InitPower + _cond.PowerMinIncrease + delta;
 
             int expectedMoney = 0;
 

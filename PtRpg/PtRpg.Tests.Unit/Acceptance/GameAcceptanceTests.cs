@@ -1,6 +1,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 using PtRpg.Rpg;
+using System;
 
 namespace PtRpg.Tests.Unit.Acceptance
 {
@@ -26,7 +27,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             hero.MaxHealth += cond.MaxHealthIncrease;
 
             int expectedHealth =
-                hero.Health + (int)(cond.MaxHealthIncrease * Target.Random.RandomValue);
+                hero.Health + (int)(cond.MaxHealthIncrease * Target.Random.RealProbability);
 
             int expectedMoney = 0;
 
@@ -52,10 +53,10 @@ namespace PtRpg.Tests.Unit.Acceptance
             var hero = Target.Hero;
             hero.Money = cond.Cost;
 
-            int expectedMaxHealth =
-                hero.MaxHealth + cond.MaxHealthMinIncrease
-                + (int)((cond.MaxHealthMaxIncrease - cond.MaxHealthMinIncrease)
-                * Target.Random.RandomValue);
+            var delta = (int)(Math.Round(
+                    (cond.MaxHealthMaxIncrease - cond.MaxHealthMinIncrease) * Target.Random.RealProbability));
+
+            int expectedMaxHealth = hero.MaxHealth + cond.MaxHealthMinIncrease + delta;
 
             int expectedMoney = 0;
 
@@ -80,10 +81,10 @@ namespace PtRpg.Tests.Unit.Acceptance
             var hero = Target.Hero;
             hero.Money = cond.Cost;
 
-            int expectedPower =
-                hero.Power + cond.PowerMinIncrease
-                + (int)((cond.PowerMaxIncrease - cond.PowerMinIncrease)
-                * Target.Random.RandomValue);
+            var delta = (int)(Math.Round(
+                    (cond.PowerMaxIncrease - cond.PowerMinIncrease) * Target.Random.RealProbability));
+
+            int expectedPower = hero.Power + cond.PowerMinIncrease + delta;
 
             int expectedMoney = 0;
 
@@ -108,7 +109,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             var hero = Target.Hero;
             int expectedHealth = hero.Health - cond.WinHealthLost;
             int expectedMoney = hero.Money + cond.WinMoney;
-            Target.Random.RandomValue = 0.1;
+            Target.Random.RealProbability = 0.1;
 
             char input = Target.GetInputByScenario<MonsterScenario>();
 

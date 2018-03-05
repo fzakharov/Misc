@@ -18,8 +18,9 @@ namespace PtRpg.Tests.Unit
             GetMock<IRandom>().Setup(r => r.GenerateRealProbability())
                 .Returns(Probability);
 
-            int expectedMaxHealth = InitMaxHealth + _cond.MaxHealthMinIncrease +
-                (int)((_cond.MaxHealthMaxIncrease - _cond.MaxHealthMinIncrease) * Probability);
+            var delta = CalcDeltaWithProbability(_cond.MaxHealthMinIncrease, _cond.MaxHealthMaxIncrease);
+
+            int expectedMaxHealth = InitMaxHealth + _cond.MaxHealthMinIncrease + delta;
 
             int expectedMoney = 0;
 

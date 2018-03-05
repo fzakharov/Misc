@@ -2,11 +2,12 @@
 using PtRpg.Engine;
 using PtRpg.Rpg;
 using FluentAssertions;
+using System;
 
 namespace PtRpg.Tests.Unit
 {
     [TestFixture]
-    public class MoneyScenarioTestsBase<TScenario, TCond> : AutoMockerTestsBase<TScenario> 
+    public class MoneyScenarioTestsBase<TScenario, TCond> : AutoMockerTestsBase<TScenario>
         where TScenario : MoneyScenarioBase<TCond> where TCond : MoneyConditions
     {
         protected HeroState _hero;
@@ -32,6 +33,11 @@ namespace PtRpg.Tests.Unit
             };
 
             _cond = Get<TCond>();
+        }
+
+        protected int CalcDeltaWithProbability(int minIncrease, int maxIncrease)
+        {
+            return (int)(Math.Round((maxIncrease - minIncrease) * Probability));
         }
 
         protected void TestCase_Should_throw_GameEx_When_Execute_with_not_enough_money()

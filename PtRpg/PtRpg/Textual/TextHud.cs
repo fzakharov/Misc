@@ -23,6 +23,22 @@ namespace PtRpg.Textual
             _tw.WriteLine();
         }
 
+        public void ShowScenarios(GameConfiguration config)
+        {
+            if (config == null)
+            {
+                throw new System.ArgumentNullException(nameof(config));
+            }
+
+            _tw.WriteLine("Scenarios:");
+            foreach (var b in config.Bindings)
+            {
+                _tw.WriteLine($"{b.Key} - {b.ScenarioTypeName}");
+            }
+
+            _tw.WriteLine();
+        }
+
         public void Update(HeroState hero)
         {
             if (hero == null)

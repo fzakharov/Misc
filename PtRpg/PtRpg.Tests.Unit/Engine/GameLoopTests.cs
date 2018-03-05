@@ -83,6 +83,7 @@ namespace PtRpg.Tests.Unit
             _scenario.Verify(s => s.Execute(_hero));
             _hud.Verify(h => h.Update(_hero));
             _hud.Verify(h => h.Show(_scenario.Object));
+            _hud.Verify(h => h.ShowScenarios(Get<GameConfiguration>()));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PtRpg.Engine;
+using System;
 
 namespace PtRpg.Rpg
 {
@@ -16,7 +17,7 @@ namespace PtRpg.Rpg
         {
             if (hero == null)
             {
-                throw new System.ArgumentNullException(nameof(hero));
+                throw new ArgumentNullException(nameof(hero));
             }
             Check(hero);
             ExecuteScenario(hero);
@@ -37,12 +38,10 @@ namespace PtRpg.Rpg
             hero.Money -= _cond.Cost;
         }
 
-        public static int CalcNewValueInRangeWithProbability(int value, int minIncrease, int maxIncrease, double probability)
+        protected static int CalcNewValueInRangeWithProbability(int value, int minIncrease, int maxIncrease, double probability)
         {
-            // todo BUG need to use round
             return value + minIncrease +
-                (int)((maxIncrease - minIncrease) *
-                    probability);
+                (int)Math.Round(((maxIncrease - minIncrease) * probability));
         }
     }
 }

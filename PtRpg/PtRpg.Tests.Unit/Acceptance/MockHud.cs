@@ -10,6 +10,10 @@ namespace PtRpg.Tests.Unit.Acceptance
         {
         }
 
+        public void ShowScenarios(GameConfiguration config)
+        {
+        }
+
         public void Update(HeroState hero)
         {
             Hero = hero;

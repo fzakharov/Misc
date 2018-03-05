@@ -2,6 +2,6 @@
 {
     public interface IInput
     {
-        char Read(); // todo abstract input
+        char Read();
     }
 }

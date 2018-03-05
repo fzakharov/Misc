@@ -13,8 +13,8 @@ namespace PtRpg.Tests.Unit
         {
             // Given
             _cond.Cost = InitMoney;
-            _cond.PowerMaxIncrease = 100;
-            _cond.PowerMinIncrease = 0;
+            _cond.PowerMaxIncrease = 2;
+            _cond.PowerMinIncrease = 1;
             GetMock<IRandom>().Setup(r => r.GenerateRealProbability())
                 .Returns(Probability);
 

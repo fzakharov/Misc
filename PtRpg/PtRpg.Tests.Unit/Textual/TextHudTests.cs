@@ -6,6 +6,7 @@ using System.IO;
 
 namespace PtRpg.Tests.Unit
 {
+    // todo more tests
     [TestFixture]
     public class TextHudTests
     {

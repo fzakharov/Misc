@@ -30,8 +30,7 @@ namespace PtRpg.Tests.Unit
             char key = 'w';
             string expected = "SomeScenarioTypeName";
 
-            var conf = Get<GameConfiguration>();
-            conf.Bindings = new[] { new KeyBinding { Key = key, ScenarioTypeName = expected } };
+            SetConfigBinding(key, expected);
 
             // When // Then
             Target.GetName(key)
@@ -54,12 +53,17 @@ namespace PtRpg.Tests.Unit
         {
             // Given
             char key = 'w';
-            var conf = Get<GameConfiguration>();
-            conf.Bindings = new[] { new KeyBinding { Key = key } };
+            SetConfigBinding(key, "SomeScenarioTypeName");
 
             // When // Then
             Target.Contains(key)
                 .Should().BeTrue();
+        }
+
+        private void SetConfigBinding(char key, string scenarioTypeName)
+        {
+            Get<GameConfiguration>()
+                .Bindings = new[] { new KeyBinding { Key = key, ScenarioTypeName = scenarioTypeName } };
         }
     }
 }

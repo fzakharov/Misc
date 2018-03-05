@@ -19,10 +19,10 @@ namespace PtRpg.Rpg
             {
                 throw new ArgumentNullException(nameof(hero));
             }
+
             Check(hero);
             ExecuteScenario(hero);
             TakeMoney(hero);
-
         }
 
         protected virtual void Check(HeroState hero)

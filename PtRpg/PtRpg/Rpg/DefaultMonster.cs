@@ -12,16 +12,16 @@ namespace PtRpg.Rpg
             _random = random;
         }
 
-        public bool IsWonVs(HeroState hero, MonsterConditions cond)
+        public bool IsWonVs(HeroState hero, MonsterConditions cond) // todo move cond to constructor?
         {
             if (hero == null)
             {
-                throw new System.ArgumentNullException(nameof(hero));
+                throw new ArgumentNullException(nameof(hero));
             }
 
             if (cond == null)
             {
-                throw new System.ArgumentNullException(nameof(cond));
+                throw new ArgumentNullException(nameof(cond));
             }
 
             var heroProabability = Math.Min(

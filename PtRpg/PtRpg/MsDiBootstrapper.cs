@@ -18,6 +18,7 @@ namespace PtRpg
             Settings = LoadSettingsFromAppConfig();
 
             var services = new ServiceCollection();
+            // todo Each setting goes with scenario. Can combine in the likeness of a scheme
             services
                 .AddSingleton<GameLoop>()
                 .AddSingleton<IBindings, GameConfigBindings>()

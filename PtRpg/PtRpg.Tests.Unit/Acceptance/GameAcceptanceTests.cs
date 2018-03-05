@@ -26,6 +26,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             hero.Money = cond.Cost;
             hero.MaxHealth += cond.MaxHealthIncrease;
 
+            // todo difficult to understand
             int expectedHealth =
                 hero.Health + (int)(cond.MaxHealthIncrease * Target.Random.RealProbability);
 
@@ -53,6 +54,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             var hero = Target.Hero;
             hero.Money = cond.Cost;
 
+            // todo difficult to understand
             var delta = (int)(Math.Round(
                     (cond.MaxHealthMaxIncrease - cond.MaxHealthMinIncrease) * Target.Random.RealProbability));
 
@@ -81,6 +83,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             var hero = Target.Hero;
             hero.Money = cond.Cost;
 
+            // todo difficult to understand
             var delta = (int)(Math.Round(
                     (cond.PowerMaxIncrease - cond.PowerMinIncrease) * Target.Random.RealProbability));
 
@@ -109,7 +112,7 @@ namespace PtRpg.Tests.Unit.Acceptance
             var hero = Target.Hero;
             int expectedHealth = hero.Health - cond.WinHealthLost;
             int expectedMoney = hero.Money + cond.WinMoney;
-            Target.Random.RealProbability = 0.1;
+            Target.Random.RealProbability = 0.1; // todo fix magic number
 
             char input = Target.GetInputByScenario<MonsterScenario>();
 

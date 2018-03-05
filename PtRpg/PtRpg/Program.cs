@@ -10,7 +10,7 @@ namespace PtRpg
         {
             var boot = new MsDiBootstrapper();
 
-            Console.Write("Start game? (y = yes):");
+            Console.Write("Start game? (y = yes):"); // todo move restart to game loop with tests?
             var key = Console.ReadLine();
 
             while (key == "y")

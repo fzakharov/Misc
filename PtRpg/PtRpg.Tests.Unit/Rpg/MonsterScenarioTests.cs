@@ -34,7 +34,7 @@ namespace PtRpg.Tests.Unit
         }
 
         [Test]
-        public void Should_win_When_Execute()
+        public void Should_lose_the_hero_When_Execute()
         {
             // Given
             _cond.WinMoney = 5;
@@ -53,7 +53,7 @@ namespace PtRpg.Tests.Unit
         }
 
         [Test]
-        public void Should_loss_When_Execute()
+        public void Should_defeat_the_hero_When_Execute()
         {
             // Given
             _cond.LossHealthLost = 40;

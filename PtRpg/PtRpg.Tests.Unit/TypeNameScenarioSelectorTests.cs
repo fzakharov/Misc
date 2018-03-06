@@ -1,11 +1,8 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
 using PtRpg.Engine;
-using PtRpg.Rpg;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PtRpg.Tests.Unit
 {

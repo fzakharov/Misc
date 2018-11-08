@@ -113,7 +113,6 @@ namespace PtRpg.Tests.Unit.Acceptance
             int expectedHealth = hero.Health - cond.WinHealthLost;
             int expectedMoney = hero.Money + cond.WinMoney;
             Target.Random.RealProbability = 0.1; // todo fix magic number
-
             char input = Target.GetInputByScenario<MonsterScenario>();
 
             // When
